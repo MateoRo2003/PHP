@@ -1,0 +1,22 @@
+{
+    "name": "mateorojas/app-salon-php-mvc-js-sass",
+    "description": "Proyecto BarberClub(PHP)",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "MVC\\" : "./",
+            "Controllers\\" : "./controllers",
+            "Model\\" : "./models",
+            "Classes\\" : "./classes"
+            
+        }
+    },
+    "authors": [
+        {
+            "name": "Mateo Rojas"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}

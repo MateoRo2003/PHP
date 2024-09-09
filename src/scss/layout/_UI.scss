@@ -1,0 +1,85 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as  m;
+
+
+//separar la pagina en dos para imagen y titulo
+.contenedor-app {
+    // Consultar el punto de quiebre para tabletas
+    @include m.tablet {
+        // Dividir la pantalla en dos columnas iguales
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        // Altura mínima del 100% de la vista del navegador
+        min-height: 100vh;
+    }
+}
+
+.imagen {
+    /* Altura de 30 rem */
+    height: 30rem;
+
+    /* Imagen de fondo */
+    background-image: url(../img/1.jpg);
+    
+    /* Cubrir todo el elemento */
+    background-size: cover;
+    
+    /* Centrar la imagen */
+    background-position: center;
+
+    /* Sombra más fuerte alrededor de la imagen */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+
+    /* Transición suave para efectos */
+    transition: box-shadow 0.3s ease;
+
+    /* Efecto de degradado oscuro */
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+        border-radius: inherit;
+    }
+
+    /* Efecto al pasar el mouse */
+    &:hover {
+        /* Sombra más suave en hover */
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+
+        /* Mostrar degradado oscuro en hover */
+        &::before {
+            opacity: 0.4;
+        }
+    }
+
+    @include m.tablet {
+        /* Altura automática en tabletas */
+        height: auto;
+        /* Ajustar sombra para dispositivos más pequeños */
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
+    }
+}
+
+
+
+
+.app {
+    width: 95%;
+    
+    margin-top: 15rem;
+    margin: auto;
+    
+    padding: 2rem; /* Ajusta el valor según tus necesidades */
+    /* Resto de las propiedades */
+}
+
+
+

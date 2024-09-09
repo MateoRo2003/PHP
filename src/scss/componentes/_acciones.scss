@@ -1,0 +1,21 @@
+@use 'base/variables' as v; // Importa el archivo de variables SCSS desde 'base/variables' y lo asigna al alias 'v' para acceder a las variables definidas en ese archivo.
+@use 'base/mixins' as m; // Importa el archivo de mixins SCSS desde 'base/mixins' y lo asigna al alias 'm' para acceder a las funciones y mixins definidos en ese archivo.
+
+.acciones {
+    // Define los estilos para un contenedor con la clase 'acciones'.
+    margin-top: v.$separacion; // Aplica un margen superior usando la variable $separacion.
+
+    @include m.tablet {
+        // Aplica los estilos definidos dentro de este bloque solo cuando se cumple la condición del mixin 'tablet'.
+        display: block; // Establece el contenedor como un flexbox.
+        justify-content: space-between; // Distribuye los elementos hijos de manera equitativa con espacio entre ellos.
+    }
+
+    a {
+        // Define los estilos para los elementos <a> (enlaces) dentro del contenedor 'acciones'.
+        color: v.$blanco; // Establece el color del texto usando la variable $blanco.
+        display: block; // Hace que el enlace ocupe todo el ancho disponible, comportándose como un bloque.
+        margin-bottom: calc(v.$separacion / 2); // Aplica un margen inferior usando la mitad de la variable $separacion.
+        text-align: center; // Centra el texto dentro del enlace.
+    }
+}

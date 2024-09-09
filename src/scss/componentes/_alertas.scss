@@ -1,0 +1,55 @@
+@use 'base/variables' as v; // Importa el archivo de variables SCSS desde la ruta 'base/variables' y lo asigna al alias 'v' para acceder a las variables definidas en ese archivo.
+@use 'base/mixins' as m;
+
+
+.alerta {
+    // Define un estilo general para los mensajes de alerta.
+    padding: calc(v.$separacion / 4); // Aplica un padding calculado en base a la variable $separacion dividida por 4.
+    color: v.$blanco; // Establece el color del texto usando la variable $blanco.
+    width: 100%; // Establece que el ancho de la alerta ocupe el 100% del contenedor padre.
+    display: block; // Define que el elemento se mostrará como un bloque, ocupando todo el ancho disponible.
+    margin-bottom: 2rem; // Añade un margen inferior de 2 rem para separar la alerta de otros elementos.
+    text-align: center; // Centra el texto dentro de la alerta.
+    font-weight: v.$bold; // Define el peso de la fuente utilizando la variable $bold.
+    text-transform: uppercase; // Transforma el texto a mayúsculas.
+    
+   
+}
+
+.alerta.error{
+    background-color: v.$rojo; // Establece el color de fondo para alertas de error.
+    
+}
+
+.alerta.exito {
+    background-color: v.$verde; // Establece el color de fondo para alertas de éxito.
+}
+
+@keyframes desplazar-abajo {
+    0% {
+        opacity: 1;
+        transform: translateY(0); // Empieza en la posición original
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(20px); // Se desplaza hacia abajo
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(22px); // Sigue hacia abajo mientras desaparece
+    }
+}
+
+
+    .alerta.error{
+        animation: desplazar-abajo 4s forwards; // Aplica la animación combinada.
+        overflow: hidden;
+        
+
+    
+    }
+
+    .campo-error input {
+    border-bottom: 2px solid red; // Líneas rojas debajo del campo
+    
+}

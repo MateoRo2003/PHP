@@ -1,0 +1,14 @@
+@use 'base/variables' as v; // Importar variables de estilo desde el módulo 'base/variables'
+@use 'base/mixins' as m; // Importar mixins desde el módulo 'base/mixins'
+
+.boton {
+    /* Incluir el mixin 'boton' con colores definidos en las variables */
+    @include m.boton(v.$azul, v.$blanco);
+    
+}
+
+.boton2 {
+    /* Incluir el mixin 'boton' con colores definidos en las variables */
+    @include m.boton2(v.$azul, v.$blanco);
+    
+}
