@@ -11,7 +11,7 @@ include_once __DIR__ ."/../templates/alertas.php";
         <input type="email" 
                 id="email" 
                 name="email" required>
-        <label class="lbl-nombre" for="email">
+                <label class="lbl-nombre" for="email">
             <span class="text-nomb">Email</span>
         <label>                                        
     </div>
