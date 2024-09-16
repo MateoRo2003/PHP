@@ -2,25 +2,7 @@
 
 namespace Model;
 
-// Define la clase Usuario que extiende de ActiveRecord
-class Usuario extends ActiveRecord  {
-    // Nombre de la tabla en la base de datos
-    protected static $tabla = 'usuarios';
-    // Columnas de la base de datos que corresponden a las propiedades del modelo
-    protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'password', 'telefono', 'admin', 'confirmado', 'token'];
-
-    // Propiedades del modelo
-    public $id;
-    public $nombre;
-    public $apellido;
-    public $password;
-    public $telefono;
-    public $email;
-    public $admin;
-    public $confirmado;
-    public $token;
-
-    // Constructor para inicializar las propiedades del objeto con los valores proporcionados
+cializar las propiedades del objeto con los valores proporcionados
     public function __construct($args = []) {
         $this->id = $args['id'] ?? null;
         $this->nombre = $args['nombre'] ?? '';

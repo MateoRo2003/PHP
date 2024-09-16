@@ -7,8 +7,8 @@ class ActiveRecord {
     protected static $tabla = '';
     protected static $columnasDB = [];
 
-    // Alertas y Mensajes
-    protected static $alertas = [];
+    // configuraciones y Mensajes
+    protected static $configuraciones = [];
     
     // Definir la conexión a la BD - includes/database.php
     public static function setDB($database) {
@@ -16,17 +16,17 @@ class ActiveRecord {
     }
 
     public static function setAlerta($tipo, $mensaje) {
-        static::$alertas[$tipo][] = $mensaje;
+        static::$configuraciones[$tipo][] = $mensaje;
     }
 
     // Validación
-    public static function getAlertas() {
-        return static::$alertas;
+    public static function getconfiguraciones() {
+        return static::$configuraciones;
     }
 
     public function validar() {
-        static::$alertas = [];
-        return static::$alertas;
+        static::$configuraciones = [];
+        return static::$configuraciones;
     }
 
     // Consulta SQL para crear un objeto en Memoria

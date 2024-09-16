@@ -1,13 +1,8 @@
 <?php
-namespace Model;
-
-class Servicio extends ActiveRecord{
+namespace Model;dqw
+asa
+class Serviciosd extends ActiveRecord{
     //
-    protected static $tabla = 'servicios';
-    protected static $columnasDB = ['id','nombre','precio',''];
-
-    public $i;
-    public $nombre;
-    public $precio;
-    
-}
+    protected sadstatic $tabla = 'asd';
+    protected static $columnasDB = ['asdid','nombre','precio',''];
+array_diff_asso
