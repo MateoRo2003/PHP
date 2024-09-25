@@ -18,6 +18,10 @@ include_once __DIR__ ."/../templates/alertas.php"
     </div>
     <input type="submit" class="boton" value="Enviar Instrucciones">
 </form>
+<div id="loading-spinner" class="loading-spinner">
+    <div class="razor"></div>
+    </div>
+
 <div class="acciones">
     <a href="/">
          ¿Ya tienes una cuenta? Inicia Sesión
@@ -26,3 +30,17 @@ include_once __DIR__ ."/../templates/alertas.php"
         ¿Aún no tienes una cuenta? Crear una
     </a>
 </div>
+<script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Previene el envío inmediato del formulario
+
+    // Muestra el spinner de carga
+    document.getElementById('loading-spinner').classList.add('show');
+
+    // Simula un retraso antes de enviar el formulario
+    setTimeout(function() {
+        event.target.submit(); // Envía el formulario después del retraso
+    }, 1000); // Puedes ajustar este tiempo de retraso según tus necesidades
+});
+
+    </script>
