@@ -1,24 +1,35 @@
 <?php
 
 function debuguear($variable) : string {
-    // Define la función `debuguear` que acepta una variable.
-
     echo "<pre>";
-    // Aplica formato predefinido para una salida más legible(sin interrupciones de linea).
-
     var_dump($variable);
-    // Muestra el tipo y contenido de la variable.
-
     echo "</pre>";
-    // Cierra el formato predefinido.
-
     exit;
-    // Detiene la ejecución del script.
 }
 
-
-// Escapa / Sanitizar(limpiar y filtrar) el HTML
+// Escapa / Sanitizar el HTML
 function s($html) : string {
     $s = htmlspecialchars($html);
     return $s;
+}
+
+function esUltimo(string $actual, string $proximo): bool {
+
+    if($actual !== $proximo) {
+        return true;
+    }
+    return false;
+}
+
+// Función que revisa que el usuario este autenticado
+function isAuth() : void {
+    if(!isset($_SESSION['login'])) {
+        header('Location: /');
+    }
+}
+
+function isAdmin() : void {
+    if(!isset($_SESSION['admin'])) {
+        header('Location: /');
+    }
 }

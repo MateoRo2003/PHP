@@ -12,3 +12,7 @@
     @include m.boton2(v.$azul, v.$blanco);
     
 }
+
+.boton-eliminar {
+    @include m.boton(v.$rojo, v.$blanco);
+}

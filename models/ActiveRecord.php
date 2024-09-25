@@ -7,8 +7,8 @@ class ActiveRecord {
     protected static $tabla = '';
     protected static $columnasDB = [];
 
-    // configuraciones y Mensajes
-    protected static $configuraciones = [];
+    // Alertas y Mensajes
+    protected static $alertas = [];
     
     // Definir la conexión a la BD - includes/database.php
     public static function setDB($database) {
@@ -16,17 +16,17 @@ class ActiveRecord {
     }
 
     public static function setAlerta($tipo, $mensaje) {
-        static::$configuraciones[$tipo][] = $mensaje;
+        static::$alertas[$tipo][] = $mensaje;
     }
 
     // Validación
-    public static function getconfiguraciones() {
-        return static::$configuraciones;
+    public static function getAlertas() {
+        return static::$alertas;
     }
 
     public function validar() {
-        static::$configuraciones = [];
-        return static::$configuraciones;
+        static::$alertas = [];
+        return static::$alertas;
     }
 
     // Consulta SQL para crear un objeto en Memoria
@@ -112,6 +112,7 @@ class ActiveRecord {
     // Busca un registro por su id
     public static function find($id) {
         $query = "SELECT * FROM " . static::$tabla  ." WHERE id = {$id}";
+
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
     }
@@ -122,11 +123,18 @@ class ActiveRecord {
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
     }
-    public static function where($columna,$valor) {
-        $query = "SELECT * FROM " . static::$tabla  ." WHERE ${columna} = '${valor}'";
-       
+
+    // Busca un registro por su id
+    public static function where($columna, $valor) {
+        $query = "SELECT * FROM " . static::$tabla  ." WHERE {$columna} = '{$valor}'";
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
+    }
+
+    // Consulta Plana de SQL (Utilizar cuando los métodos del modelo no son suficientes)
+    public static function SQL($query) {
+        $resultado = self::consultarSQL($query);
+        return $resultado;
     }
 
     // crea un nuevo registro
@@ -140,7 +148,7 @@ class ActiveRecord {
         $query .= " ) VALUES (' "; 
         $query .= join("', '", array_values($atributos));
         $query .= " ') ";
-
+        
         // Resultado de la consulta
         $resultado = self::$db->query($query);
         return [
@@ -177,7 +185,5 @@ class ActiveRecord {
         $resultado = self::$db->query($query);
         return $resultado;
     }
-    // En el modelo Usuario
-
 
 }

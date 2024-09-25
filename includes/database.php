@@ -1,6 +1,6 @@
 <?php
 
-$db = mysqli_connect('localhost', 'root', 'Casiof-91w', 'barber_mvc');
+$db = mysqli_connect('localhost', 'root', 'casiof-91w', 'appsalon_mvc_php');
 
 
 if (!$db) {
