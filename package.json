@@ -16,11 +16,5 @@
     "gulp-terser": "^2.1.0",
     "sass": "^1.75.0",
     "sharp": "^0.33.3"
-  },
-  "dependencies": {
-    "@fullcalendar/core": "^1",
-    "@fullcalendar/daygrid": "^6.1.15",
-    "flatpickr": "^4.6.13",
-    "izitoast": "^1.4.0"
   }
 }

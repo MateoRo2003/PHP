@@ -1,3 +1,4 @@
+
 @use 'base/variables' as v; // Importar variables de estilo desde el módulo 'base/variables'
 @use 'base/mixins' as m;
 input:-webkit-autofill,
@@ -29,6 +30,10 @@ input:-webkit-autofill:active{
     border-radius: 5px; 
     cursor: not-allowed;
     border-bottom: 1px solid;
+}
+.campo {
+    position: relative;
+    margin-bottom: 3rem;
 }
 
 .campo input {

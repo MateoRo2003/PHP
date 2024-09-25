@@ -10,25 +10,30 @@ $validacion = $usuario->validarNuevaCuenta();
 ?>
 <form class="form" method="POST" action="/crear-cuenta" novalidate>
     <!-- Campo para el nombre -->
-    <div class="campo">
-    <div class="campo <?php echo isset($validacion['nombreClass']) && !empty($_POST) ? $validacion['nombreClass'] : ''; ?>">
-    
-        <input type="text" id="nombre" name="nombre" value="<?php echo s($usuario->nombre); ?>" required>
-        <label class="lbl-nombre" for="nombre">
-        <span class="text-nomb">Nombre</span>
-        </label>
-    </div>
+    <div class="campo <?php echo isset($alertas['error']) ? 'campo-error' : ''; ?>">
+    <label for="nombre">Nombre</label>
+    <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        placeholder="Tu Nombre"
+        value="<?php echo s($usuario->nombre); ?>"
+    />
     </div>
 
     <!-- Campo para el apellido -->
-    <div class="campo">
-    <div class="campo <?php echo isset($validacion['apellidoClass']) && !empty($_POST) ? $validacion['apellidoClass'] : ''; ?>">
-        <input type="text" id="apellido" name="apellido" value="<?php echo s($usuario->apellido); ?>" required>
+    
+    <div class="campo <?php echo isset($alertas['error'])? 'campo-error': '';?>">
+        <input 
+        type="text" 
+        id="apellido" 
+        name="apellido" 
+        value="<?php echo s($usuario->apellido); ?>" required>
         <label class="lbl-nombre" for="apellido">
             <span class="text-nomb">Apellido</span>
         </label>
-</div>
     </div>
+    
 
     <!-- Campo para el teléfono -->
     <div class="campo">

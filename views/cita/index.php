@@ -1,3 +1,8 @@
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.js"></script>
+
+
+
 <h1 class="nombre-pagina">Crear Nueva Cita</h1>
 <p class="descripcion-pagina">Elige tus servicios y coloca tus datos</p>
 
@@ -18,8 +23,8 @@
         <div id="servicios" class="listado-servicios"></div>
     </div>
     <div id="paso-2" class="seccion">
-        <h2>Tus Datos y Cita</h2>
-        <p class="text-center">Coloca tus datos y fecha de tu cita</p>
+        <h2>Tus Datos y Turno</h2>
+        <p class="text-center">Coloca tus datos y fecha de tu turno</p>
 
         <form class="formulario">
             <div class="campo">
@@ -33,14 +38,26 @@
                 />
             </div>
 
-            <div class="campo">
-                <label for="fecha">Fecha</label>
-                <input
-                    id="fecha"
-                    type="date"
-                    min="<?php echo date('Y-m-d', strtotime('+1 day') ); ?>"
-                />
+
+  <!-- Calendario y Fecha -->
+            <div id="calendar-container">
+            <div id="calendar"></div>
             </div>
+
+                <!-- Input para mostrar la fecha seleccionada -->
+                <div class="campo">
+
+                    <input
+                        id="fecha"
+                        type="date"                       
+                    />
+                </div>
+            <div class="campo">
+                <h2>¿Que parte del dia prefieres?</h2>
+                <button type="button" class="button-hora">Mañana</button>
+                <button type="button"   class="button-hora">Tarde</button>
+            </div>
+
 
             <div class="campo">
                 <label for="hora">Hora</label>

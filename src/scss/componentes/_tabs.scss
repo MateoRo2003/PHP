@@ -31,134 +31,112 @@
     }
 }
 
-.flatpickr-calendar.inline {
+
+
+
+
+#calendar {
+    max-width: 90%; /* Ajusta el ancho total del calendario */
+    margin: 0 auto; /* Centrar el calendario */
+}
+
+/* Centrar el número en cada celda */
+.fc-daygrid-day-number {
     display: block;
-    position: relative;
-    margin-top: 15px;
-    top: 0;
+    text-align: center;
+    font-size: 1.2rem; /* Tamaño del número del día */
+    margin-top: 10px; /* Espacio entre el número y el borde superior */
 }
 
-.flatpickr-calendar {
-    margin-top: 50px;
-    width: 95%; /* Ajuste de ancho para pantallas pequeñas */
-    max-width: 100%; /* Asegura que el calendario no exceda el ancho de la pantalla */
-    height: auto; /* Deja que la altura se ajuste automáticamente */
-    display: block;
-    position: relative;
-    box-sizing: border-box;
-    margin: 0 auto;
-    
-    @include m.tablet {
-        width: 85%; /* Ajuste del ancho para pantallas medianas */
-    }
-
-
+/* Personalizar el estilo de las celdas */
+.fc-daygrid-day {
+    background-color: #1e1e1e; /* Color de fondo acorde a la página */
+    border: 1px solid #444; /* Bordes oscuros */
+    color: #fff; /* Texto en blanco */
 }
 
-.flatpickr-calendar .flatpickr-months {
-    height: 4rem;
-    width: 100%;
-    box-sizing: border-box;
+.fc-day-today {
+    background-color: #2a2a2a; /* Color de fondo más oscuro para el día actual */
+    color: #fff;
 }
 
-.flatpickr-calendar .flatpickr-days {
-    font-size: 0.9rem; /* Ajuste del tamaño del texto para pantallas pequeñas */
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.flatpickr-calendar .flatpickr-day {
-    height: 2.5rem; /* Ajuste de altura para pantallas pequeñas */
-    font-size: 1.2rem; /* Ajuste de tamaño de fuente para pantallas pequeñas */
-    line-height: 2.5rem; /* Centra el texto verticalmente */
-    width: 2.5rem; /* Ajuste de ancho para pantallas pequeñas */
-    box-sizing: border-box;
-    
-    @include m.tablet {
-        height: 3rem;
-        width: 3rem;
-        font-size: 1.5rem;
-    }
-
-
-}
-
-.flatpickr-calendar .flatpickr-weekday {
-    font-size: 1rem; /* Ajuste del tamaño del texto para pantallas pequeñas */
-    box-sizing: border-box;
-}
-
-.flatpickr-calendar .flatpickr-prev-month,
-.flatpickr-calendar .flatpickr-next-month {
-    font-size: 1rem; /* Ajuste del tamaño del texto de los botones de navegación para pantallas pequeñas */
-    width: 2rem; /* Ajuste del ancho de los botones de navegación para pantallas pequeñas */
-    height: 2rem; /* Ajuste de la altura de los botones de navegación para pantallas pequeñas */
-    box-sizing: border-box;
-
-    @include m.tablet {
-        font-size: 1.2rem;
-        width: 2.5rem;
-        height: 2.5rem;
-    }
-
-    @include m.desktop {
-        font-size: 1.2rem;
-        width: 2.5rem;
-        height: 2.5rem;
-    }
-}
-
-.flatpickr-calendar .flatpickr-confirm-button {
-    font-size: 0.9rem; /* Ajuste del tamaño del texto del botón de confirmación para pantallas pequeñas */
-    width: 2.5rem; /* Ajuste del ancho del botón de confirmación para pantallas pequeñas */
-    height: 2rem; /* Ajuste de la altura del botón de confirmación para pantallas pequeñas */
-    box-sizing: border-box;
-}
-
-.flatpickr-innerContainer {
-    width: 100%;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    margin: 0 auto;
-    box-sizing: border-box;
-}
-
-.campo2 {
-    margin-top: 35px;
-}
-
-/* Estilos para el Modal */
-.modal {
-    display: none; /* Oculta el modal por defecto */
-    position: fixed; /* Mantiene el modal en la misma posición al hacer scroll */
-    z-index: 1; /* Asegura que el modal esté sobre otros contenidos */
-    left: 0;
-    top: 0;
-    width: 100%; /* Ancho completo de la ventana */
-    height: 100%; /* Alto completo de la ventana */
-    overflow: auto; /* Agrega scroll si el contenido es más alto que la ventana */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
-}
-
-.modal-content {
-    background-color: #fff;
-    margin: 15% auto; /* Centra el modal en la pantalla */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Ancho del modal */
-    max-width: 600px; /* Ancho máximo del modal */
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
+/* Personalizar los botones de navegación */
+.fc-button {
+    background-color: #444; /* Color de fondo */
+    border: none;
+    color: white;
     font-weight: bold;
+}
 
-    &:hover,
-    &:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
+.fc-button:hover {
+    background-color: #666; /* Color al pasar el mouse por encima */
+}
+
+/* Cambiar el estilo de la cabecera del calendario */
+.fc-toolbar-title {
+    font-family: 'Montserrat', sans-serif; /* Ajusta la fuente para que combine con el resto del sitio */
+    font-size: 1.5rem; /* Tamaño del título */
+    color: #fff; /* Color del título */
+}
+.fc .fc-daygrid-day-number {
+    position: absolute; /* Cambiamos a absolute para centrar mejor */
+    top: 50%;  /* Ajustamos verticalmente */
+    left: 50%; /* Ajustamos horizontalmente */
+    transform: translate(-50%, -50%); /* Centramos el número completamente */
+    font-size: 1.2rem; /* Ajusta el tamaño de los números si lo necesitas */
+    z-index: 4;
+    padding: 0; /* Eliminamos el padding para evitar desplazamientos innecesarios */
+}
+
+.fc-day-sun:not(.disabled-day) {
+    background-image: repeating-linear-gradient(45deg, rgba(255, 0, 0, 0.1) 0px, rgba(255, 0, 0, 0.1) 10px, transparent 10px, transparent 20px);
+    background-color: rgba(255, 0, 0, 0.05);
+}
+
+/* Estilo para los días deshabilitados (días pasados) */
+.fc-daygrid-day.disabled-day {
+    cursor: not-allowed;
+    background-color: #333; /* Más oscuro */
+    color: #aaa; /* Texto gris claro */
+    text-decoration: line-through; /* Tachado */
+    pointer-events: none; /* Desactivar clic */
+}
+
+/* Efecto hover para deshabilitar interacción con días pasados */
+.fc-daygrid-day.disabled-day:hover {
+    background-color: rgba(200, 200, 200, 0.3); /* Mantiene el color gris al pasar el mouse */
+    border: none; /* No aplica borde hover a los días anteriores */
+}
+
+/* No aplicar el estilo de fondo a la cabecera de domingos ("Dom") */
+.fc-col-header-cell.fc-day-sun {
+    background: none !important; /* No fondo en la cabecera */
+    color: white; /* Si quieres un color específico para el texto de la cabecera */
+}
+
+.fc-day-today {
+    background-color: rgba(0, 123, 255, 0.2); /* Fondo azul claro */
+    border: 2px solid rgba(0, 123, 255, 0.8); /* Borde azul más oscuro */
+    color: #0056b3; /* Texto en un azul más oscuro */
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* Estilo especial para las fechas seleccionadas */
+.fc-daygrid-day.selected {
+    background-color: rgba(0, 123, 255, 0.4); /* Fondo azul claro */
+    border: 2px solid rgba(0, 123, 255, 1); /* Borde azul más intenso */
+    color: white; /* Texto blanco para que contraste */
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* Estilo al pasar el mouse sobre cualquier celda del día */
+.fc-daygrid-day:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo semi-transparente */
+    border: 2px solid white; /* Borde blanco */
+}
+
+/* Mantener el estilo del día seleccionado incluso al pasar el mouse */
+.fc-daygrid-day.selected:hover {
+    background-color: rgba(0, 123, 255, 0.4); /* Fondo azul mantenido */
+    border: 2px solid white; /* Borde blanco para resaltar */
 }
