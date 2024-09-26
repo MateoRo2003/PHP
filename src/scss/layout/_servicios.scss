@@ -4,33 +4,60 @@
 .listado-servicios {
     display: grid;
     gap: 2rem;
+
     @include m.tablet {
-        @include m.grid(2, 2rem);
+        @include m.grid(2, 2rem); // Dos columnas en tablet
     }
+
+
 
     .servicio {
         background-color: v.$blanco;
         padding: 3rem;
         border-radius: 1rem;
-        transition-property: transform;
-        transition-duration: 300ms;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 300ms ease, box-shadow 300ms ease, border 300ms ease;
         text-align: center;
+        border: 2px solid transparent; // Borde transparente por defecto
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer; // Mostrar el cursor de mano
+        }
 
         &.seleccionado {
-            background-color: v.$azul;
+            background-color: lighten(v.$azul, 20%); // Color azul claro para diferenciar
+            border: 2px solid v.$azul; // Borde azul para resaltar
+            position: relative; // Necesario para el ícono de selección
+
+            .icono-seleccion {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                background-color: v.$blanco;
+                color: v.$azul;
+                font-size: 2rem;
+                width: 3rem;
+                height: 3rem;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
             p {
                 color: v.$blanco;
             }
         }
 
-        &:hover {
-            transform: scale(1.1);
-        }
-
         p {
             color: v.$negro;
-            margin: 0 0 calc( v.$separacion / 4) 0;
+            margin: 0 0 calc(v.$separacion / 4) 0;
+            font-size: 1.6rem;
         }
+
         .precio-servicio {
             color: v.$azul;
             font-weight: v.$bold;

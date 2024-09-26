@@ -15,20 +15,22 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function iniciarApp() {
+
+
     mostrarSeccion(); // Muestra y oculta las secciones
     tabs(); // Cambia la sección cuando se presionen los tabs
     botonesPaginador(); // Agrega o quita los botones del paginador
     paginaSiguiente(); 
     paginaAnterior();
-
+    mostrarTurnos();
     consultarAPI(); // Consulta la API en el backend de PHP
-
+    mostrarHorarios();
     idCliente();
     nombreCliente(); // Añade el nombre del cliente al objeto de cita
     seleccionarFecha(); // Añade la fecha de la cita en el objeto
     inicializarCalendario();
     seleccionarHora(); // Añade la hora de la cita en el objeto
-
+    generarHorarios();
     mostrarResumen(); // Muestra el resumen de la cita
 }
 
@@ -120,7 +122,7 @@ async function consultarAPI() {
         const resultado = await fetch(url);
         const servicios = await resultado.json();
         mostrarServicios(servicios);
-    
+        
     } catch (error) {
         console.log(error);
     }
@@ -154,7 +156,7 @@ function mostrarServicios(servicios) {
 }
 
 function seleccionarServicio(servicio) {
-    const { id } = servicio;
+    const { id, duracion } = servicio;
     const { servicios } = cita;
 
     // Identificar el elemento al que se le da click
@@ -282,10 +284,101 @@ function inicializarCalendario() {
 
 
 
+function mostrarTurnos() {
+    const turnoManana = document.querySelector('#turno-manana');
+    const turnoTarde = document.querySelector('#turno-tarde');
+    
+    turnoManana.addEventListener('click', () => mostrarHorarios('manana'));
+    turnoTarde.addEventListener('click', () => mostrarHorarios('tarde'));
+}
+
+function mostrarHorarios(turno) {
+    const contenedorHorarios = document.querySelector('#horarios');
+    contenedorHorarios.innerHTML = '';  // Limpiar horarios anteriores
+    
+
+    let horarios = [];
+    
+    if (turno === 'manana') {
+        horarios = generarHorarios('08:00', '11:30', 30);  // Horarios de mañana, intervalos de 30 min
+    } else {
+        horarios = generarHorarios('14:00', '18:30', 30);  // Horarios de tarde, intervalos de 30 min
+    }
+       // Solo mostrar el contenedor si hay horarios generados
+       if (horarios.length > 0) {
+        contenedorHorarios.style.display = 'block';  // Mostrar los horarios
+    }
+    horarios.forEach(hora => {
+        const botonHora = document.createElement('BUTTON');
+        botonHora.classList.add('boton', 'horario');
+        botonHora.textContent = hora;
+        botonHora.addEventListener('click', () => seleccionarHora(hora));
+        
+        contenedorHorarios.appendChild(botonHora);
+    });
+
+    // Añadir la clase de animación para mostrar los botones
+    setTimeout(() => {
+        contenedorHorarios.classList.add('fade-in'); // Agregar la clase de animación
+    }, 0); // Ejecutar inmediatamente después de que se hayan agregado los botones
+}
+
+function generarHorarios(inicio, fin, intervalo) {
+    let horarios = [];
+    let horaActual = moment(inicio, 'HH:mm');  // Usar moment.js para manipular tiempos
+    let horaFinal = moment(fin, 'HH:mm');
+    
+    while (horaActual <= horaFinal) {
+        horarios.push(horaActual.format('HH:mm'));
+        horaActual.add(intervalo, 'minutes');
+    }
+    
+    return horarios;
+}
+
+
+function seleccionarHora(hora) {
+    // Evitar el reinicio de la página
+    event.preventDefault(); // Esto es importante si el botón está dentro de un formulario
+
+    // Limpiar selección previa
+    const botonesHorario = document.querySelectorAll('.horario');
+    botonesHorario.forEach(boton => {
+        boton.classList.remove('seleccionado'); // Elimina la clase de seleccionado de todos los botones
+    });
+
+    // Seleccionar el botón actual
+    const botonSeleccionado = Array.from(botonesHorario).find(boton => boton.textContent === hora);
+    if (botonSeleccionado) {
+        botonSeleccionado.classList.add('seleccionado'); // Agrega clase 'seleccionado' al botón que se ha elegido
+    }
+
+    // Actualizar la hora en la cita
+    cita.hora = hora;
+    calcularDuracionServicios(); // Actualizar la duración total
+    mostrarResumen(); // Mostrar el resumen con la nueva duración
+}
+
+
+function calcularDuracionServicios() {
+    let duracionTotal = 0;
+    cita.servicios.forEach(servicio => {
+        duracionTotal += servicio.duracion;  // Sumar la duración de cada servicio
+    });
+    cita.duracionTotal = duracionTotal;
+}
 
 
 
-
+async function consultarHorariosOcupados(fecha) {
+    const url = `http://localhost:3000/api/horarios-ocupados?fecha=${fecha}`;
+    const resultado = await fetch(url);
+    const horariosOcupados = await resultado.json();
+    
+    // Filtrar los horarios disponibles
+    const horariosDisponibles = horarios.filter(hora => !horariosOcupados.includes(hora));
+    mostrarHorariosDisponibles(horariosDisponibles);
+}
 
 
 
@@ -307,23 +400,32 @@ function seleccionarFecha() {
     });
 }
 
-function seleccionarHora() {
-    const inputHora = document.querySelector('#hora');
-    inputHora.addEventListener('input', function(e) {
+// function seleccionarHora() {
+//     const inputHora = document.querySelector('#hora');
+//     inputHora.addEventListener('input', function(e) {
 
 
-        const horaCita = e.target.value;
-        const hora = horaCita.split(":")[0];
-        if(hora < 10 || hora > 18) {
-            e.target.value = '';
-            mostrarAlerta('Hora No Válida', 'error', '.formulario');
-        } else {
-            cita.hora = e.target.value;
+//         const horaCita = e.target.value;
+//         const hora = horaCita.split(":")[0];
+//         if(hora < 10 || hora > 18) {
+//             e.target.value = '';
+//             mostrarAlerta('Hora No Válida', 'error', '.formulario');
+//         } else {
+//             cita.hora = e.target.value;
 
-            // console.log(cita);
-        }
-    })
-}
+//             // console.log(cita);
+//         }
+//     })
+// }
+
+
+
+
+
+
+
+
+
 
 function mostrarAlerta(mensaje, tipo, elemento, desaparece = true) {
 

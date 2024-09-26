@@ -92,8 +92,9 @@
         align-items:center;
     }
 
-    .boton {
-        @include m.boton(v.$negro, v.$blanco);
+    .boton-cerrar {
+        @include m.boton-cerrar(v.$negro, v.$blanco);
+        
         
     }
 }
@@ -110,3 +111,8 @@
         margin: 0 0 1rem 0;
     }
 }
+
+.button-hora{
+    @include m.boton-hora(v.$negro, v.$blanco);
+}
+

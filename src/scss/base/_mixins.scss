@@ -39,6 +39,7 @@
         padding: 1.5rem 16rem; // Reducir el tamaño del padding en tablets
         width: auto; // Cambiar el ancho a automático en tablets
         margin: 3rem auto; // Centrar el botón horizontalmente en tablets
+        
     }
     &:hover {
         background-color: darken( $bgColor, 10% );
@@ -81,3 +82,62 @@
     }
 }
 
+
+
+@mixin boton-hora($bgColor, $colorTexto) {
+    background-color: $bgColor;
+    padding: 1.5rem 10rem;
+    color: $colorTexto;
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: 400;
+    display: inline-block;
+    font-weight: 700;
+    border: none;
+    transition-property: background-color;
+    transition-duration: .3s;
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin: 1rem 2rem;
+
+    @include tablet {
+        width: auto;
+       
+    }
+    &:hover {
+        background-color: darken( $bgColor, 10% );
+        cursor: pointer;
+    }
+}
+
+
+@mixin boton-cerrar($bgColor, $colorTexto) {
+    background-color: $bgColor;
+    padding: 1.5rem 4rem;
+    color: $colorTexto;
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: 400;
+    display: inline-block;
+    font-weight: 700;
+    border: none;
+    transition-property: background-color;
+    transition-duration: .3s;
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin: 5rem 0;
+ 
+
+    @include tablet {
+        padding: -1.5rem 12rem; // Reducir el tamaño del padding en tablets
+        width: auto; // Cambiar el ancho a automático en tablets
+        margin-left: 2rem auto; // Centrar el botón horizontalmente en tablets
+        
+    }
+    &:hover {
+        background-color: darken( $bgColor, 10% );
+        cursor: pointer;
+    }
+}

@@ -52,10 +52,11 @@
                         type="date"                       
                     />
                 </div>
-            <div class="campo">
-                <h2>¿Que parte del dia prefieres?</h2>
-                <button type="button" class="button-hora">Mañana</button>
-                <button type="button"   class="button-hora">Tarde</button>
+            
+                <p class="text-center">Que parte del dia prefieres?</p>
+            <div class="campo-hora">
+                <button id="turno-manana" type="button" class="button-hora">Mañana</button>
+                <button  id="turno-tarde" type="button"   class="button-hora">Tarde</button>
             </div>
 
 
@@ -66,6 +67,12 @@
                     type="time"
                 />
             </div>
+
+            <div id="horarios">
+
+            </div>
+
+
             <input type="hidden" id="id" value="<?php echo $id; ?>" >
 
         </form>
@@ -92,5 +99,6 @@
     $script = "
         <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
         <script src='build/js/app.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js'></script> <!-- Agrega Moment.js -->
     ";
 ?>
