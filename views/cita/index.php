@@ -57,20 +57,16 @@
             <div class="campo-hora">
                 <button id="turno-manana" type="button" class="button-hora">Mañana</button>
                 <button  id="turno-tarde" type="button"   class="button-hora">Tarde</button>
-            </div>
 
+                <div id="horarios">
 
-            <div class="campo">
-                <label for="hora">Hora</label>
-                <input
-                    id="hora"
-                    type="time"
-                />
-            </div>
-
-            <div id="horarios">
+                </div>  
 
             </div>
+            
+
+
+
 
 
             <input type="hidden" id="id" value="<?php echo $id; ?>" >

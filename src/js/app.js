@@ -295,7 +295,7 @@ function mostrarTurnos() {
 function mostrarHorarios(turno) {
     const contenedorHorarios = document.querySelector('#horarios');
     contenedorHorarios.innerHTML = '';  // Limpiar horarios anteriores
-    
+    contenedorHorarios.style.display = 'block';  // Mostrar los horarios
 
     let horarios = [];
     
@@ -305,9 +305,9 @@ function mostrarHorarios(turno) {
         horarios = generarHorarios('14:00', '18:30', 30);  // Horarios de tarde, intervalos de 30 min
     }
        // Solo mostrar el contenedor si hay horarios generados
-       if (horarios.length > 0) {
-        contenedorHorarios.style.display = 'block';  // Mostrar los horarios
-    }
+       
+        
+    
     horarios.forEach(hora => {
         const botonHora = document.createElement('BUTTON');
         botonHora.classList.add('boton', 'horario');
