@@ -1,0 +1,23 @@
+name: Deploy to DomCloud
+
+on:
+  push:
+    branches:
+      - main  # Cambia 'main' si tu rama principal tiene otro nombre
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to DomCloud
+        env:
+          DOMCLOUD_API_TOKEN: ${{ secrets.DOMCLOUD_API_TOKEN }}  # Se utiliza el secreto para el token
+        run: |
+          echo "Desplegando en DomCloud..."
+          # Aquí se debe agregar el comando para desplegar tu aplicación
+          # Cambia esta línea según la API o el método de despliegue que uses
+          curl -X POST -H "Authorization: Bearer $DOMCLOUD_API_TOKEN" https://your-domcloud-api-url.com/deploy
