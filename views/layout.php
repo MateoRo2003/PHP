@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BarberClub</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700;900&display=swap" rel="stylesheet"> 
+    <link rel="icon" type="image/png" href="favicon.ico" sizes="16x16">
+
     <link rel="stylesheet" href="build/css/app.css">
 </head>
 <body>

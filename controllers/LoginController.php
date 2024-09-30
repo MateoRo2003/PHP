@@ -129,7 +129,7 @@ class LoginController {
         }
 
         $alertas = Usuario::getAlertas();
-        $router->render('auth/recuperar-password', [
+        $router->render('auth/recuperar-cuenta', [
             'alertas' => $alertas, 
             'error' => $error
         ]);
