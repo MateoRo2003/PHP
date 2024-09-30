@@ -371,7 +371,7 @@ function calcularDuracionServicios() {
 
 
 async function consultarHorariosOcupados(fecha) {
-    const url = `http://localhost:3000/api/horarios-ocupados?fecha=${fecha}`;
+    const url = `/api/horarios-ocupados?fecha=${fecha}`;
     const resultado = await fetch(url);
     const horariosOcupados = await resultado.json();
     
@@ -552,7 +552,7 @@ async function reservarCita() {
 
     try {
         // Petición hacia la api
-        const url = 'http://localhost:3000/api/citas'
+        const url = '/api/citas'
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
